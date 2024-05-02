@@ -284,6 +284,7 @@ export const Edge: FC<EdgeProps> = ({
           opacity={selectionOpacity}
           position={arrowPosition}
           rotation={arrowRotation}
+          renderOrder={2}
           size={arrowSize}
           onActive={setActive}
           onContextMenu={() => {
@@ -317,7 +318,7 @@ export const Edge: FC<EdgeProps> = ({
     () =>
       labelVisible &&
       label && (
-        <a.group position={labelPosition as any}>
+        <a.group position={labelPosition as any} renderOrder={1}>
           <Label
             text={label}
             ellipsis={15}
@@ -355,7 +356,7 @@ export const Edge: FC<EdgeProps> = ({
     () =>
       menuVisible &&
       contextMenu && (
-        <Html prepend={true} center={true} position={midPoint}>
+        <Html prepend={true} center={true} position={midPoint} renderOrder={3}>
           {contextMenu({ data: edge, onClose: () => setMenuVisible(false) })}
         </Html>
       ),
@@ -366,6 +367,7 @@ export const Edge: FC<EdgeProps> = ({
     <group>
       <Line
         curveOffset={curveOffset}
+        renderOrder={0}
         animated={animated}
         color={
           isSelected || active || isActive
